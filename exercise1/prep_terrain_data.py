@@ -20,16 +20,18 @@ def makeTerrainData(n_points=1000):
 	y_train = y[0:split]
 	y_test = y[split:]
 
-	grade_sig = [X_train[ii][0] for ii in range(0,len(X_train)) if y_test[ii]==0]
-	bumpy_sig = [X_train[ii][1] for ii in range(0,len(X_train)) if y_test[ii]==0]
-	grade_bkg = [X_train[ii][0] for ii in range(0,len(X_train)) if y_test[ii]==1]
-	bumpy_bkg = [X_train[ii][1] for ii in range(0,len(X_train)) if y_test[ii]==1]
+
+	grade_sig = [X_train[ii][0] for ii in range(0, len(X_train)) if y_train[ii]==0]
+	bumpy_sig = [X_train[ii][1] for ii in range(0, len(X_train)) if y_train[ii]==0]
+	grade_bkg = [X_train[ii][0] for ii in range(0, len(X_train)) if y_train[ii]==1]
+	bumpy_bkg = [X_train[ii][1] for ii in range(0, len(X_train)) if y_train[ii]==1]
 
 	grade_sig = [X_test[ii][0] for ii in range(0,len(X_test)) if y_test[ii]==0]
 	bumpy_sig = [X_test[ii][1] for ii in range(0,len(X_test)) if y_test[ii]==0]
 	grade_bkg = [X_test[ii][0] for ii in range(0,len(X_test)) if y_test[ii]==1]
 	bumpy_bkg = [X_test[ii][1] for ii in range(0,len(X_test)) if y_test[ii]==1]
 
-	test_data = {"fast":{"grade":grade_sig,"bumpiness":bumpy_sig},"slow":{"grade":grade_bkg,"bumpiness":{bumpy_bkg}}}
+	test_data = {"fast":{"grade":grade_sig, "bumpiness":bumpy_sig}
+			, "slow":{"grade":grade_bkg,"bumpiness":bumpy_bkg }}
 
 	return X_train,y_train,X_test,y_test

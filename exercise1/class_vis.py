@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import warnings
-warnings.filterwarning("ignore")
+warnings.filterwarnings("ignore")
 
 import matplotlib
 matplotlib.use('agg')
@@ -48,4 +48,4 @@ def output_image(name, format, bytes):
 	data['name'] = name
 	data['format'] = format
 	data['bytes'] = base64.encodestring(bytes)
-	print image_start+json.dumps(data)+ima]	
+	print (image_start+json.dumps(data)+image_end)

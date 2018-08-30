@@ -18,6 +18,6 @@ from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred,labels_test)
 
 def submitAccuracy():
-	return acc
+	return {"acc":round(acc,3)}
 
 print(str(acc))
